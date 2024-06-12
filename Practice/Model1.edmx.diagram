@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="95b2abcc7a144ea4a8ab40d9cc360ede" Name="Diagram1">
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.Assignments" Width="1.5" PointX="8.25" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.Certificates" Width="1.5" PointX="12.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.CompanyInfo" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.Contracts" Width="1.5" PointX="7.5" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.Course" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.Groups" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.IndividualLessons" Width="1.5" PointX="10.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.PaymentType" Width="1.5" PointX="5.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.Solutions" Width="1.5" PointX="10.5" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.Student" Width="1.5" PointX="5.25" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.StudentGroup" Width="1.5" PointX="7.5" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.TypeCourse" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.Users" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticeStudyCenterModel.UserStatus" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Assignmen__Cours__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Solutions__Assig__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Certifica__Contr__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Certifica__Cours__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Certifica__Stude__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Users__CompanyID__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Contracts__Cours__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Contracts__Creat__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Contracts__Payme__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Contracts__Stude__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Course__TypeCour__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Groups__CourseID__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Individua__Cours__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__StudentGr__Group__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK_Groups_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Individua__Stude__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Individua__UserI__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Solutions__Stude__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Solutions__Teach__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Student__UserID__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__StudentGr__Stude__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticeStudyCenterModel.FK__Users__StatusID__48CFD27E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,90 @@
+﻿<Page x:Class="Practice.view.ForAdmin.ContractsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Practice.view.ForAdmin"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="800"
+      Title="ContractsPage">
+
+    <Border CornerRadius="5" Background="{DynamicResource SecundaryBackgroundColor}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Список договоров" FontSize="30" FontWeight="Bold" Foreground="{DynamicResource PrimaryBlueColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TabControl Grid.Row="1" Style="{DynamicResource MyStyleTabControl}" Background="Transparent" x:Name="TabControl">
+                <TabItem Header="Договоры" Style="{DynamicResource PersonalAccountItemStyle}">
+                    <DockPanel>
+                        <Grid DockPanel.Dock="Top" Height="35">
+                            <Button Grid.Column="1" Content="Удалить договор" Style="{DynamicResource everybutton}" HorizontalAlignment="Right" Margin="5"/>
+                        </Grid>
+                        <DataGrid  x:Name="dtgrEnrollment" RowStyle="{DynamicResource  DataGridRowStyle}" RowHeaderStyle="{StaticResource DataGridRowHeaderStyle}" 
+                                    ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Style="{StaticResource DataGridStyle}" CellStyle="{StaticResource  DataGridCellStyle}" Cursor="Hand" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" Header="Дата договора" Binding="{Binding ContractDate}"/>
+                                <DataGridTextColumn Width="*" Header="Создатель договора" Binding="{Binding CreatorName}"/>
+                                <DataGridTextColumn Width="*" Header="ФИО Студента" Binding="{Binding StudentName}"/>
+                                <DataGridTextColumn Width="*" Header="Курс" Binding="{Binding CourseName}"/>
+                                <DataGridTextColumn Width="*" Header="Тип оплаты" Binding="{Binding PaymentTypeName}"/>
+                                <DataGridTextColumn Width="0.5*" Header="Стоимость" Binding="{Binding TotalCost}"/>
+                                <DataGridTextColumn Width="0.5*" Header="Оплачено" Binding="{Binding AmountPaid}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="Создать договор" Style="{DynamicResource PersonalAccountItemStyle}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1.9*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Margin="10" Text="Дата заключения договора" Style="{DynamicResource txbbl}"/>
+                            <DatePicker Grid.Column="1" Name="ContractDate" FontSize="20" VerticalAlignment="Center" Margin="20, 0"/>
+
+                            <TextBlock Text="Курс" Grid.Row="1" Style="{DynamicResource txbbl}"/>
+                            <ComboBox x:Name="cmbxCourse" Grid.Row="1" Grid.Column="1" DisplayMemberPath="Name" Height="35" Margin="20, 0"/>
+
+                            <TextBlock Margin="10" Text="Студент" Grid.Row="2" Style="{DynamicResource txbbl}"/>
+                            <ComboBox x:Name="cmbxStudent" Grid.Column="1" Grid.Row="2" DisplayMemberPath="FirstName" Height="35" Margin="20, 0"/>
+
+                            <TextBlock Margin="10" Text="Тип оплаты" Grid.Row="3" Style="{DynamicResource txbbl}"/>
+                            <ComboBox x:Name="cmbxPayment" Grid.Column="1" Grid.Row="3" DisplayMemberPath="PaymentTypeName" Height="35" Margin="20, 0"/>
+
+                            <TextBlock Margin="10" Text="Стоимость" Grid.Row="4" Style="{DynamicResource txbbl}"/>
+                            <TextBox x:Name="txbTotal" Grid.Row="4" Grid.Column="1" Style="{DynamicResource TextBoxStyle}" Margin="10"/>
+
+                            <TextBlock Margin="10" Text="Оплачено" Grid.Row="5" Style="{DynamicResource txbbl}"/>
+                            <TextBox x:Name="txbAmount" Grid.Row="5" Grid.Column="1" Style="{DynamicResource TextBoxStyle}" Margin="10"/>
+
+                            <TextBlock Margin="10" Text="Начало обучения" Grid.Row="6" Style="{DynamicResource txbbl}"/>
+                            <DatePicker Grid.Column="1" Grid.Row="6" Name="StartDate" FontSize="20" VerticalAlignment="Center" Margin="20, 0"/>
+
+                            <TextBlock Margin="10" Text="Окончание обучения" Grid.Row="7" Style="{DynamicResource txbbl}"/>
+                            <DatePicker Grid.Column="1" Grid.Row="7" Name="EndDate" FontSize="20" VerticalAlignment="Center" Margin="20, 0"/>
+
+                        </Grid>
+                        <Button Margin="200, 30" Content="Создать договор" Grid.Row="1" Style="{DynamicResource everybutton}" FontSize="25" />
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Border>
+</Page>
