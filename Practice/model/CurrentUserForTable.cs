@@ -10,7 +10,7 @@ namespace Practice.model
     {
         public int ID { get; set; }
         public string Login { get; set; }
-        public int Status { get; set; }
+        public string StatusName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }

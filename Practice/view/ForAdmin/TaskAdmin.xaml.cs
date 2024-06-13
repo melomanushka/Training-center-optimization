@@ -28,6 +28,43 @@ namespace Practice.view.ForAdmin
         {
             InitializeComponent();
             UpdateDataGrid();
+            ComboBoxShowUsers();
+
+            cmbxCourse.ItemsSource = PracticeStudyCenterEntities.GetContext().Course.ToList();
+            cmbxGroups.ItemsSource = PracticeStudyCenterEntities.GetContext().Groups.ToList();
+        }
+        private void ComboBoxShowUsers()
+        {
+            using (PracticeStudyCenterEntities context = new PracticeStudyCenterEntities())
+            {
+                var usersList = (from user in context.Users
+                                 where user.StatusID == 3
+                                 select new UserFullName
+                                 {
+                                     UserID = user.UserID,
+                                     FullName = user.LastName + " " + user.FirstName + " " + user.MiddleName
+                                 }).ToList();
+
+                var users = new ObservableCollection<UserFullName>(usersList);
+
+                cmbxStudent.ItemsSource = users;
+                cmbxStudent.DisplayMemberPath = "FullName"; // Устанавливаем отображаемое значение
+                cmbxStudent.SelectedValuePath = "UserID";  // Устанавливаем значение, возвращаемое при выборе
+                
+                var usersListTeacher = (from user in context.Users
+                                 where user.StatusID == 2
+                                 select new UserFullName
+                                 {
+                                     UserID = user.UserID,
+                                     FullName = user.LastName + " " + user.FirstName + " " + user.MiddleName
+                                 }).ToList();
+
+                var usersTeacher = new ObservableCollection<UserFullName>(usersListTeacher);
+
+                cmbxTeacher.ItemsSource = usersTeacher;
+                cmbxTeacher.DisplayMemberPath = "FullName"; // Устанавливаем отображаемое значение
+                cmbxTeacher.SelectedValuePath = "UserID";  // Устанавливаем значение, возвращаемое при выборе
+            }
         }
         private void UpdateDataGrid()
         {
@@ -51,7 +88,7 @@ namespace Practice.view.ForAdmin
                     {
                         IndividualLessonsID = r.IndividualLessonsID,
                         StudentID = (int)r.StudentID,
-                        StudentName = r.Users.FirstName,
+                        StudentName = r.Student.Users.FirstName,
                         TeacherID = (int)r.UserID,
                         TeacherName = r.Users.FirstName,
                         CourseID = (int)r.CourseID,
@@ -59,6 +96,40 @@ namespace Practice.view.ForAdmin
                     }).ToList());
 
                 dtgrIndivid.ItemsSource = currentIndivids;
+            }
+        }
+
+        //ПОМИМО ГРУППЫ ДОЛЖНА УДАЛЯТЬ В СТУДЕНТГРУППА ВСЕ СТРОКИ ГДЕ НАХОДИЛАСЬ ЭТА ГРУППА TODO
+        private void btnDelGroup(object sender, RoutedEventArgs e)
+        {
+            CurrentGroup group = (CurrentGroup)dtgrGroups.SelectedItem;
+            if (group != null)
+            {
+                MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить этот элемент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    using(PracticeStudyCenterEntities context = new PracticeStudyCenterEntities())
+                    {
+                        var itemToRemove = context.Groups.FirstOrDefault(s => s.GroupsID == group.GroupsID);
+                        if (itemToRemove != null)
+                        {
+                            context.Groups.Remove(itemToRemove);
+                            context.SaveChanges();
+                            MessageBox.Show("Данные успешно удалены");
+
+                            UpdateDataGrid();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Элемент не найден.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите элемент для удаления.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
         }
     }

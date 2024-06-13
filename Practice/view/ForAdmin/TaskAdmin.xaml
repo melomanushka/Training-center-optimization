@@ -18,9 +18,11 @@
             <TabControl Grid.Row="1" x:Name="TabControl1" Background="Transparent" Style="{DynamicResource MyStyleTabControl}">
                 <TabItem Header="Группа" Style="{DynamicResource PersonalAccountItemStyle}">
                     <DockPanel>
-                        <Grid DockPanel.Dock="Top" Height="30">
-                            <Button Grid.Column="2" Margin="10, 0" Content="Удалить группу" Style="{DynamicResource everybutton}" HorizontalAlignment="Right"/>
-                        </Grid>
+                        <StackPanel DockPanel.Dock="Top">
+                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" HorizontalAlignment="Right">
+                                <Button  Content="Удалить группу" Style="{DynamicResource everybutton}" Margin="3" Click="btnDelGroup"/>
+                            </Border>
+                        </StackPanel>
                         <DataGrid x:Name="dtgrGroups" RowStyle="{DynamicResource  DataGridRowStyle}" RowHeaderStyle="{StaticResource DataGridRowHeaderStyle}" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Style="{StaticResource DataGridStyle}" CellStyle="{StaticResource  DataGridCellStyle}" Cursor="Hand">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="*" Header="Название группы" Binding="{Binding NameGroup}"/>
@@ -32,9 +34,11 @@
                 </TabItem>
                 <TabItem Header="Индивидуально" Style="{DynamicResource PersonalAccountItemStyle}">
                     <DockPanel>
-                        <Grid DockPanel.Dock="Top" Height="30">
-                            <Button Grid.Column="2" Margin="10, 0" Content="Удалить идивидуальное занятие" Style="{DynamicResource everybutton}" HorizontalAlignment="Right"/>
-                        </Grid>
+                         <StackPanel DockPanel.Dock="Top">
+                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" HorizontalAlignment="Right">
+                                <Button  Content="Удалить индивидуальное занятие" Style="{DynamicResource everybutton}" Margin="3"/>
+                            </Border>
+                        </StackPanel>
                         <DataGrid x:Name="dtgrIndivid" RowStyle="{DynamicResource  DataGridRowStyle}" RowHeaderStyle="{StaticResource DataGridRowHeaderStyle}" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Style="{StaticResource DataGridStyle}" CellStyle="{StaticResource  DataGridCellStyle}" Cursor="Hand">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="*" Header="Номер занятия" Binding="{Binding IndividualLessonsID}"/>
@@ -68,16 +72,18 @@
                             <ComboBox x:Name="cmbxCourse" Grid.Row="0" Grid.Column="1" DisplayMemberPath="Name" Height="35" Margin="20, 0"/>
 
                             <TextBlock Margin="10" Text="Группа" Grid.Row="1" Style="{DynamicResource txbbl}"/>
-                            <ComboBox x:Name="cmbxGroups" Grid.Column="1" Grid.Row="1" DisplayMemberPath="FirstName" Height="35" Margin="20, 0"/>
+                            <ComboBox x:Name="cmbxGroups" Grid.Column="1" Grid.Row="1" DisplayMemberPath="NameGroup" Height="35" Margin="20, 0"/>
 
                             <TextBlock Margin="10" Text="Студент(если индивидульно)" Grid.Row="2" Style="{DynamicResource txbbl}"/>
-                            <ComboBox x:Name="cmbxStudent" Grid.Column="1" Grid.Row="2" DisplayMemberPath="FirstName" Height="35" Margin="20, 0"/>
+                            <ComboBox x:Name="cmbxStudent" Grid.Column="1" Grid.Row="2" Height="35" Margin="20, 0"/>
 
                             <TextBlock Margin="10" Text="Преподаватель" Grid.Row="3" Style="{DynamicResource txbbl}"/>
-                            <ComboBox x:Name="cmbxTeacher" Grid.Column="1" Grid.Row="3" DisplayMemberPath="FirstName" Height="35" Margin="20, 0"/>
+                            <ComboBox x:Name="cmbxTeacher" Grid.Column="1" Grid.Row="3" Height="35" Margin="20, 0"/>
 
                         </Grid>
-                        <Button  Content="Создать" Grid.Row="1" Style="{DynamicResource everybutton}" FontSize="25" />
+                        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="2" CornerRadius="10" Width="250" Height="60">
+                            <Button  Content="Создать" Style="{DynamicResource everybutton}" FontSize="25" />
+                        </Border>
                     </Grid>
                 </TabItem>
             </TabControl>

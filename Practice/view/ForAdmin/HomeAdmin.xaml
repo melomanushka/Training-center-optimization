@@ -19,18 +19,22 @@
 
                 <TabItem Header="Преподаватели" Style="{DynamicResource PersonalAccountItemStyle}">
                                 <DockPanel>
-                                    <StackPanel  DockPanel.Dock="Bottom">
-                                        <Button Height="50" Width="200" HorizontalAlignment="Left" Style="{DynamicResource everybutton}" Content="Удалить преподавателя"/>
-                                    </StackPanel>
-                                    <DataGrid x:Name="dtgrTeacher" RowStyle="{DynamicResource  DataGridRowStyle}" RowHeaderStyle="{StaticResource DataGridRowHeaderStyle}" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Style="{StaticResource DataGridStyle}" CellStyle="{StaticResource  DataGridCellStyle}" Cursor="Hand" >
+                        <StackPanel  DockPanel.Dock="Top">
+                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" HorizontalAlignment="Right">
+                                <Button Style="{DynamicResource everybutton}" Content="Удалить преподавателя"
+                                                Click="btnDelTeacher" Margin="5"/>
+                            </Border>
+                         </StackPanel>
+                                    <DataGrid x:Name="dtgrTeacher" MouseDoubleClick="dtgrTeacher_MouseDoubleClick" RowStyle="{DynamicResource  DataGridRowStyle}" RowHeaderStyle="{StaticResource DataGridRowHeaderStyle}" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Style="{StaticResource DataGridStyle}" CellStyle="{StaticResource  DataGridCellStyle}" Cursor="Hand" >
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Width="*" Header="Имя" Binding="{Binding FirstName}"/>
                                             <DataGridTextColumn Width="*" Header="Фамилия" Binding="{Binding LastName}"/>
                                             <DataGridTextColumn Width="*" Header="Отчество" Binding="{Binding MiddleName}"/>
-                                            <DataGridTextColumn Width="*" Header="Email" Binding="{Binding Email}"/>
+                                            <DataGridTextColumn Width="1.5*" Header="Email" Binding="{Binding Email}"/>
                                             <DataGridTextColumn Width="*" Header="Номер телефона" Binding="{Binding PhoneNumber}"/>
                                             <DataGridTextColumn Width="*" Header="Логин" Binding="{Binding Login}"/>
                                             <DataGridTextColumn Width="*" Header="Пароль" Binding="{Binding Password}"/>
+                                <DataGridTextColumn Width="*" Header="Статус" Binding="{Binding StatusName}"/>
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </DockPanel>
@@ -38,15 +42,18 @@
 
                             <TabItem Header="Стунденты" Style="{DynamicResource PersonalAccountItemStyle}">
                                 <DockPanel>
-                                    <StackPanel  DockPanel.Dock="Bottom">
-                                        <Button Height="50" Width="200" HorizontalAlignment="Left" Style="{DynamicResource everybutton}" Content="Удалить студента"/>
-                                    </StackPanel>
-                                    <DataGrid x:Name="dtgrStudent" RowStyle="{DynamicResource  DataGridRowStyle}" RowHeaderStyle="{StaticResource DataGridRowHeaderStyle}" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Style="{StaticResource DataGridStyle}" CellStyle="{StaticResource  DataGridCellStyle}" Cursor="Hand" >
+                        <StackPanel  DockPanel.Dock="Top">
+                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" HorizontalAlignment="Right">
+                                <Button Style="{DynamicResource everybutton}" Content="Удалить студента"
+                                                Margin="5" Click="btnDelStudent"/>
+                            </Border>
+                        </StackPanel>
+                        <DataGrid x:Name="dtgrStudent" MouseDoubleClick="dtgrStudent_MouseDoubleClick" RowStyle="{DynamicResource  DataGridRowStyle}" RowHeaderStyle="{StaticResource DataGridRowHeaderStyle}" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Style="{StaticResource DataGridStyle}" CellStyle="{StaticResource  DataGridCellStyle}" Cursor="Hand" >
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Width="*" Header="Имя" Binding="{Binding FirstName}"/>
                                             <DataGridTextColumn Width="*" Header="Фамилия" Binding="{Binding LastName}"/>
                                             <DataGridTextColumn Width="*" Header="Отчество" Binding="{Binding MiddleName}"/>
-                                            <DataGridTextColumn Width="*" Header="Email" Binding="{Binding Email}"/>
+                                            <DataGridTextColumn Width="1.5*" Header="Email" Binding="{Binding Email}"/>
                                             <DataGridTextColumn Width="*" Header="Номер телефона" Binding="{Binding PhoneNumber}"/>
                                             <DataGridTextColumn Width="*" Header="Логин" Binding="{Binding Login}"/>
                                             <DataGridTextColumn Width="*" Header="Пароль" Binding="{Binding Password}"/>
@@ -112,7 +119,7 @@
                         <TextBlock Text="Когда выдан(студент)" Grid.Row="11" VerticalAlignment="Center"/>
                         <DatePicker Grid.Column="1" Grid.Row="11" Name="Date" FontSize="20" VerticalAlignment="Center" Margin="20, 0"/>
 
-                        <Button Content="Добавить" Grid.Row="12" Grid.Column="2" Style="{DynamicResource everybutton}" Grid.RowSpan="12" />
+                        <Button Content="Добавить" Grid.Row="12" Grid.Column="2" Style="{DynamicResource everybutton}" Grid.RowSpan="12" Click="btnAddUser"/>
 
                                 </Grid>
                 </TabItem>

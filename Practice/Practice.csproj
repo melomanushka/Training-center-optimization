@@ -90,6 +90,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="view\ForAdmin\CurrentUserEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\ForAdmin\CurrentUserStudentEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="view\ForAdmin\HomeAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,6 +202,7 @@
     <Compile Include="model\CurrentUser.cs" />
     <Compile Include="model\CurrentUserForTable.cs" />
     <Compile Include="model\CurrentUserForTeacher.cs" />
+    <Compile Include="model\UserFullName.cs" />
     <Compile Include="PaymentType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -223,6 +232,12 @@
     </Compile>
     <Compile Include="view\ForAdmin\CourseAdmin.xaml.cs">
       <DependentUpon>CourseAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\ForAdmin\CurrentUserEdit.xaml.cs">
+      <DependentUpon>CurrentUserEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\ForAdmin\CurrentUserStudentEdit.xaml.cs">
+      <DependentUpon>CurrentUserStudentEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\ForAdmin\HomeAdmin.xaml.cs">
       <DependentUpon>HomeAdmin.xaml</DependentUpon>
