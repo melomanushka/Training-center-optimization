@@ -28,8 +28,8 @@
                         <DataGrid x:Name="dtgrCourse" RowStyle="{DynamicResource  DataGridRowStyle}" RowHeaderStyle="{StaticResource DataGridRowHeaderStyle}" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Style="{StaticResource DataGridStyle}" CellStyle="{StaticResource  DataGridCellStyle}" Cursor="Hand" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="*" Header="Название" Binding="{Binding Name}"/>
-                                <DataGridTextColumn Width="*" Header="Количество часов" Binding="{Binding Hours}"/>
-                                <DataGridTextColumn Width="*" Header="Описание" Binding="{Binding Description}"/>
+                                <DataGridTextColumn Width="0.6*" Header="Количество часов" Binding="{Binding Hours}"/>
+                                <DataGridTextColumn Width="2*" Header="Описание" Binding="{Binding Description}"/>
                                 <DataGridTextColumn Width="*" Header="Тип курса" Binding="{Binding TypeCourseName}"/>
                             </DataGrid.Columns>
                         </DataGrid>

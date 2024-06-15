@@ -77,7 +77,7 @@ namespace Practice.view.ForAdmin
                         NameGroup = r.NameGroup,
                         UserID = (int)r.UserID,
                         CourseID = (int)r.CourseID,
-                        UserName = r.Users.FirstName,
+                        UserName = r.Users.FirstName + " " + r.Users.LastName + " " + r.Users.MiddleName,
                         CourseName = r.Course.Name,
                     }).ToList());
 
@@ -88,9 +88,9 @@ namespace Practice.view.ForAdmin
                     {
                         IndividualLessonsID = r.IndividualLessonsID,
                         StudentID = (int)r.StudentID,
-                        StudentName = r.Student.Users.FirstName,
+                        StudentName = r.Student.Users.FirstName + " " + r.Student.Users.LastName + " " + r.Student.Users.MiddleName,
                         TeacherID = (int)r.UserID,
-                        TeacherName = r.Users.FirstName,
+                        TeacherName = r.Users.FirstName + " " + r.Users.LastName + " " + r.Users.MiddleName,
                         CourseID = (int)r.CourseID,
                         CourseName = r.Course.Name
                     }).ToList());
@@ -129,8 +129,128 @@ namespace Practice.view.ForAdmin
             else
             {
                 MessageBox.Show("Выберите элемент для удаления.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-
             }
         }
+            
+        private void dtgrGroups_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            CurrentGroup group = ( CurrentGroup)dtgrGroups.SelectedItem;
+            if (group != null)
+            {
+                CurrentGroupEdit currentGroupEdit = new CurrentGroupEdit(group);
+                currentGroupEdit.Closed += EditWindow_Closed;
+                currentGroupEdit.ShowDialog();
+            }
+        }
+        private void EditWindow_Closed(object sender, EventArgs e)
+        {
+            UpdateDataGrid();
+        }
+
+        private void ButtonDelIndivid_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentIndivid current = (CurrentIndivid)dtgrIndivid.SelectedItem;
+            if (current != null)
+            {
+                MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить этот элемент?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    using (PracticeStudyCenterEntities context = new PracticeStudyCenterEntities())
+                    {
+                        var itemToRemove = context.IndividualLessons.FirstOrDefault(d => d.IndividualLessonsID == current.IndividualLessonsID);
+                        if (itemToRemove != null)
+                        {
+                            context.IndividualLessons.Remove(itemToRemove);
+                            context.SaveChanges();
+                            MessageBox.Show("Данные успешно удалены");
+
+                            UpdateDataGrid();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Элемент не найден.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void dtgrIndivid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            CurrentIndivid individ = (CurrentIndivid)dtgrIndivid.SelectedItem;
+            if (individ != null)
+            {
+                CurrentIndividEdit currentIndividEdit = new CurrentIndividEdit(individ);
+                currentIndividEdit.Closed += EditWindow_Closed;
+                currentIndividEdit.ShowDialog();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            using (var context = new PracticeStudyCenterEntities())
+            {
+                // Проверяем, выбрана ли группа
+                var selectedGroup = cmbxGroups.SelectedItem as Groups;
+                var selectedStudent = cmbxStudent.SelectedItem as UserFullName;
+                var selectedTeacher = cmbxTeacher.SelectedItem as UserFullName;
+                var selectedCourse = cmbxCourse.SelectedItem as Course;
+
+                if (selectedCourse == null || selectedTeacher == null)
+                {
+                    MessageBox.Show("Пожалуйста, выберите курс и преподавателя.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if (selectedGroup != null)
+                {
+                    // Добавление новой группы
+                    Groups newGroup = new Groups
+                    {
+                        NameGroup = selectedGroup.NameGroup,
+                        UserID = selectedTeacher.UserID,
+                        CourseID = selectedCourse.CourseID
+                    };
+                    context.Groups.Add(newGroup);
+                    context.SaveChanges();
+                    MessageBox.Show("Группа успешно создана");
+                    this.TabControl1.SelectedIndex = 0;
+                }
+                else if (selectedStudent != null)
+                {
+                    // Проверка, является ли выбранный пользователь студентом
+                    var student = context.Student.FirstOrDefault(s => s.UserID == selectedStudent.UserID);
+                    if (student == null)
+                    {
+                        MessageBox.Show("Выбранный пользователь не является студентом.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
+                    // Добавление нового индивидуального занятия
+                    IndividualLessons newIndividLesson = new IndividualLessons
+                    {
+                        StudentID = student.StudentID,
+                        UserID = selectedTeacher.UserID,
+                        CourseID = selectedCourse.CourseID
+                    };
+                    context.IndividualLessons.Add(newIndividLesson);
+                    context.SaveChanges();
+                    MessageBox.Show("Индивидуальное занятие успешно создано");
+                    this.TabControl1.SelectedIndex = 1;
+                }
+                else
+                {
+                    MessageBox.Show("Пожалуйста, выберите группу или студента для индивидуального занятия.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                UpdateDataGrid();
+
+                // Очистка полей
+                cmbxCourse.SelectedItem = null;
+                cmbxGroups.SelectedItem = null;
+                cmbxStudent.SelectedItem = null;
+                cmbxTeacher.SelectedItem = null;
+            }
+        }
+
     }
 }

@@ -16,11 +16,13 @@
             </Grid.RowDefinitions>
             <Label Content="Список договоров" FontSize="30" FontWeight="Bold" Foreground="{DynamicResource PrimaryBlueColor}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TabControl Grid.Row="1" Style="{DynamicResource MyStyleTabControl}" Background="Transparent" x:Name="TabControl">
-                <TabItem Header="Договоры" Style="{DynamicResource PersonalAccountItemStyle}">
+                <TabItem Header="Договоры" MouseDoubleClick="TabItem_MouseDoubleClick" Style="{DynamicResource PersonalAccountItemStyle}">
                     <DockPanel>
-                        <Grid DockPanel.Dock="Top" Height="35">
-                            <Button Grid.Column="1" Content="Удалить договор" Style="{DynamicResource everybutton}" HorizontalAlignment="Right" Margin="5"/>
-                        </Grid>
+                        <StackPanel DockPanel.Dock="Top">
+                            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="4" HorizontalAlignment="Right">
+                                <Button Content="Удалить договор" Style="{DynamicResource everybutton}" HorizontalAlignment="Right" Margin="5" Click="Button_Click"/>
+                            </Border>
+                        </StackPanel>
                         <DataGrid  x:Name="dtgrEnrollment" RowStyle="{DynamicResource  DataGridRowStyle}" RowHeaderStyle="{StaticResource DataGridRowHeaderStyle}" 
                                     ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Style="{StaticResource DataGridStyle}" CellStyle="{StaticResource  DataGridCellStyle}" Cursor="Hand" >
                             <DataGrid.Columns>
@@ -81,7 +83,9 @@
                             <DatePicker Grid.Column="1" Grid.Row="7" Name="EndDate" FontSize="20" VerticalAlignment="Center" Margin="20, 0"/>
 
                         </Grid>
-                        <Button Margin="200, 30" Content="Создать договор" Grid.Row="1" Style="{DynamicResource everybutton}" FontSize="25" />
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" Grid.Row="1" Margin="250, 25">
+                            <Button Content="Создать договор" Style="{DynamicResource everybutton}" FontSize="25" Click="ButtonADDContract_Click" />
+                        </Border>
                     </Grid>
                 </TabItem>
             </TabControl>

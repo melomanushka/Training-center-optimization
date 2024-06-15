@@ -82,11 +82,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="view\ForAdmin\AddStudentInGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="view\ForAdmin\ContractsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\ForAdmin\CourseAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\ForAdmin\CurrentContractEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\ForAdmin\CurrentGroupEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\ForAdmin\CurrentIndividEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -227,11 +243,23 @@
     <Compile Include="UserStatus.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="view\ForAdmin\AddStudentInGroup.xaml.cs">
+      <DependentUpon>AddStudentInGroup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\ForAdmin\ContractsPage.xaml.cs">
       <DependentUpon>ContractsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\ForAdmin\CourseAdmin.xaml.cs">
       <DependentUpon>CourseAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\ForAdmin\CurrentContractEdit.xaml.cs">
+      <DependentUpon>CurrentContractEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\ForAdmin\CurrentGroupEdit.xaml.cs">
+      <DependentUpon>CurrentGroupEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\ForAdmin\CurrentIndividEdit.xaml.cs">
+      <DependentUpon>CurrentIndividEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\ForAdmin\CurrentUserEdit.xaml.cs">
       <DependentUpon>CurrentUserEdit.xaml</DependentUpon>

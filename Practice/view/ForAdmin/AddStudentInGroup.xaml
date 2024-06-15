@@ -1,0 +1,32 @@
+﻿<Window x:Class="Practice.view.ForAdmin.AddStudentInGroup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practice.view.ForAdmin"
+        mc:Ignorable="d"
+        Title="AddStudentInGroup" Height="250" Width="400"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Background="Transparent" AllowsTransparency="True"
+        ResizeMode="NoResize" WindowState="Normal"
+        MouseDown="Window_MouseDown">
+    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="8" Background="{DynamicResource PrimaryBackgroundColor}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="Добавление студента" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Foreground="{DynamicResource PrimaryBlueColor}" FontWeight="Bold"/>
+            <ComboBox x:Name="cmbxSt" Grid.Row="1" Margin="30 45"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
+                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="5">
+                    <Button Content="Добавить студента в группу" Style="{DynamicResource everybutton}" Margin="5" Click="Button_Click_1"/>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="5">
+                    <Button Content="Отмена" Style="{DynamicResource everybutton}" Margin="5" Click="Button_ClickClose"/>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
