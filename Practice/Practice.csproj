@@ -146,6 +146,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="view\ForTeacher\CurrentCourseForTeacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\ForTeacher\CurrentGroupForTeacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\ForTeacher\CurrentSolutionForTeacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="view\ForTeacher\HomeTeacher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -210,6 +222,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="model\CurrentAssigment.cs" />
     <Compile Include="model\CurrentCourse.cs" />
     <Compile Include="model\CurrentEnrollment.cs" />
     <Compile Include="model\CurrentGroup.cs" />
@@ -290,6 +303,15 @@
     </Compile>
     <Compile Include="view\ForTeacher\CourseTeacher.xaml.cs">
       <DependentUpon>CourseTeacher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\ForTeacher\CurrentCourseForTeacher.xaml.cs">
+      <DependentUpon>CurrentCourseForTeacher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\ForTeacher\CurrentGroupForTeacher.xaml.cs">
+      <DependentUpon>CurrentGroupForTeacher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\ForTeacher\CurrentSolutionForTeacher.xaml.cs">
+      <DependentUpon>CurrentSolutionForTeacher.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\ForTeacher\HomeTeacher.xaml.cs">
       <DependentUpon>HomeTeacher.xaml</DependentUpon>

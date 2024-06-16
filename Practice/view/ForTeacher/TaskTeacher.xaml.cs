@@ -26,9 +26,9 @@ namespace Practice.view.ForTeacher
         public TaskTeacher()
         {
             InitializeComponent();
-            UpDateDataGrid();
+            UpdateDataGrid();
         }
-        private void UpDateDataGrid()
+        private void UpdateDataGrid()
         {
             using(var context = new PracticeStudyCenterEntities())
             {
@@ -50,5 +50,27 @@ namespace Practice.view.ForTeacher
                 ItemList.ItemsSource = solutions;
             }
         }
+        private void ShowSolution_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button != null)
+            {
+                var user = button.CommandParameter as CurrentSolutions;
+                if (user != null)
+                {
+                    using (var context = new PracticeStudyCenterEntities())
+                    {
+                        CurrentSolutionForTeacher currentSolutionForTeacher = new CurrentSolutionForTeacher(user);
+                        currentSolutionForTeacher.Closed += EditWindow_Closed;
+                        currentSolutionForTeacher.ShowDialog();
+                    }
+                }
+            }
+        }
+        private void EditWindow_Closed(object sender, EventArgs e)
+        {
+            UpdateDataGrid();
+        }
+
     }
 }

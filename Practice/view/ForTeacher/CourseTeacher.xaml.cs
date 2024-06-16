@@ -49,5 +49,25 @@ namespace Practice.view.ForTeacher
 
             }
         }
+
+        private void ButtonShowCourse_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button != null)
+            {
+                var group = button.CommandParameter as CurrentCourse;
+                if (group != null)
+                {
+                    CurrentCourseForTeacher currentGroupForTeacher = new CurrentCourseForTeacher(group);
+                    currentGroupForTeacher.Closed += EditWindow_Closed;
+                    currentGroupForTeacher.ShowDialog();
+                }
+            }
+        }
+        private void EditWindow_Closed(object sender, EventArgs e)
+        {
+            UpdateDataGrid();
+        }
+
     }
 }

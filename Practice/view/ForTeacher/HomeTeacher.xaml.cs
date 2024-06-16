@@ -53,11 +53,25 @@ namespace Practice.view.ForTeacher
                     .Where(op => op.UserID == CurrentUser.ID)
                     .Select(op => new CurrentUserForTeacher
                     {
+                        GroupsID = op.GroupsID,
                         GroupName = op.NameGroup,
                         CourseName = op.Course.Name,
                     }).ToList());
 
                 ItemList.ItemsSource = groups;
+            }
+        }
+        private void CurrentGroups_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button != null)
+            {
+                var group = button.CommandParameter as CurrentUserForTeacher;
+                if (group != null)
+                {
+                    CurrentGroupForTeacher currentGroupForTeacher = new CurrentGroupForTeacher(group);
+                    currentGroupForTeacher.Show();
+                }
             }
         }
     }

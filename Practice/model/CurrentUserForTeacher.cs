@@ -20,6 +20,7 @@ namespace Practice.model
 
         //for groups
         public string GroupName { get; set; }
+        public int GroupsID { get; set; }
 
     }
 }
