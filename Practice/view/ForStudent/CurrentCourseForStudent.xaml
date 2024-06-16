@@ -1,0 +1,70 @@
+﻿<Window x:Class="Practice.view.ForStudent.CurrentCourseForStudent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practice.view.ForStudent"
+        mc:Ignorable="d"
+        Title="CurrentCourseForStudent" Height="450" Width="800"                
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Background="Transparent" AllowsTransparency="True"
+        ResizeMode="NoResize" WindowState="Normal"
+        MouseDown="Window_MouseDown">
+
+    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="8" Background="{DynamicResource PrimaryBackgroundColor}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Курс: " FontSize="25" FontWeight="Bold" Foreground="{DynamicResource PrimaryBlueColor}"/>
+                <TextBlock x:Name="txblCourse" FontSize="25" FontWeight="Bold" Foreground="{DynamicResource PrimaryBlueColor}"/>
+            </StackPanel>
+            <!-- Header Section -->
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,5,0" Height="30" Orientation="Horizontal" FlowDirection="RightToLeft">
+                <Button Style="{DynamicResource  CloseButtonStyle}" x:Name="btn_close" Content="&#xE8BB;" Click="btn_close_Click"/>
+            </StackPanel>
+
+            <!-- Content Section -->
+            <Grid Grid.Row="1" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Assignment Selection -->
+                <TextBlock Text="Выберите задание:" Style="{DynamicResource txbbl}" FontSize="18"/>
+                <ComboBox x:Name="AssignmentListBox" DisplayMemberPath="Title" SelectedValuePath="AssignmentID" Grid.Column="1" 
+                          Width="350" Style="{DynamicResource ComboBoxStyle}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <!-- Student Comment -->
+                <TextBlock Text="Комментарий студента:" FontSize="16" Grid.Row="1" VerticalAlignment="Top" Style="{DynamicResource txbbl}"/>
+                <TextBox x:Name="StudentCommentTextBox" Grid.Row="1" Grid.Column="1" Height="100" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" Margin="0,0,0,10" Style="{DynamicResource TextBoxStyle}"/>
+
+                <!-- Solution File -->
+                <TextBlock Text="Файл решения:" FontSize="18" Grid.Row="2" VerticalAlignment="Center" Style="{DynamicResource txbbl}"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox x:Name="SolutionFilePathTextBox" IsReadOnly="True" Width="400" Margin="0,0,10,0" Style="{DynamicResource TextBoxStyle}"/>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10">
+                        <Button Content="Выбрать файл" Click="SelectFile_Click" Style="{DynamicResource everybutton}" Margin="5"/>
+                    </Border>
+                </StackPanel>
+
+                <!-- Add Solution Button -->
+                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10">
+                    <Button Content="Добавить решение" Click="AddSolution_Click" Style="{DynamicResource everybutton}" Margin="5" FontSize="15"/>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+    
+</Window>

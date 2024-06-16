@@ -67,5 +67,26 @@ namespace Practice.view.ForStudent
                 ItemList2.ItemsSource = courses2;
             }
         }
+        private void ShowTasksd_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button != null)
+            {
+                var user = button.CommandParameter as CurrentCourse;
+                if (user != null)
+                {
+                    using (var context = new PracticeStudyCenterEntities())
+                    {
+                        CurrentCourseForStudent currentCourseForStudent = new CurrentCourseForStudent(user);
+                        currentCourseForStudent.Closed += EditWindow_Closed;
+                        currentCourseForStudent.ShowDialog();
+                    }
+                }
+            }
+        }
+        private void EditWindow_Closed(object sender, EventArgs e)
+        {
+            UpdateDataGrid();
+        }
     }
 }
